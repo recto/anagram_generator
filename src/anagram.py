@@ -11,12 +11,12 @@ class AnagramGenerator(object):
     AnagramGenerator class
     """
 
-    def load_dictionary(self):
+    def load_dictionary(self, dfile='resource/word_list.txt'):
         """
         Load dictionary from resource/word_list.txt.
         """
         dic = defaultdict(bool)
-        with open('resource/word_list.txt', 'r') as dictionary:
+        with open(dfile, 'r') as dictionary:
             for word in dictionary:
                 word = word.strip()
                 dic[word] = True
@@ -52,7 +52,7 @@ class AnagramGenerator(object):
                             word.append(sub_word)
                         words.append(word)
                 else:
-                    words.append(perm[0:index])
+                    words.append([perm[0:index]])
 
             elif index == len(perm):
                 words = []
